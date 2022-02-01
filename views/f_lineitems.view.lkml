@@ -149,7 +149,7 @@ view: f_lineitems {
   measure: Cumulative_Total_Sales {
     description: "Cumulative total sales from items sold (also known as a running total)"
     type: running_total
-    sql: ${l_totalprice} ;;
+    sql: ${Total_Sale_Price} ;;
     value_format_name: usd
   }
 }
