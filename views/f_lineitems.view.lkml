@@ -13,11 +13,13 @@ view: f_lineitems {
   }
 
   dimension: l_commitdatekey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_COMMITDATEKEY" ;;
   }
 
   dimension: l_custkey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_CUSTKEY" ;;
   }
@@ -38,11 +40,13 @@ view: f_lineitems {
   }
 
   dimension: l_orderdatekey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_ORDERDATEKEY" ;;
   }
 
   dimension: l_orderkey {
+    hidden: yes
     type: number
     primary_key: yes
     sql: ${TABLE}."L_ORDERKEY" ;;
@@ -59,6 +63,7 @@ view: f_lineitems {
   }
 
   dimension: l_partkey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_PARTKEY" ;;
   }
@@ -69,6 +74,7 @@ view: f_lineitems {
   }
 
   dimension: l_receiptdatekey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_RECEIPTDATEKEY" ;;
   }
@@ -79,6 +85,7 @@ view: f_lineitems {
   }
 
   dimension: l_shipdatekey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_SHIPDATEKEY" ;;
   }
@@ -99,6 +106,7 @@ view: f_lineitems {
   }
 
   dimension: l_suppkey {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_SUPPKEY" ;;
   }
@@ -114,6 +122,7 @@ view: f_lineitems {
   }
 
   dimension: l_totalprice {
+    hidden: yes
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
@@ -140,7 +149,7 @@ view: f_lineitems {
   measure: Cumulative_Total_Sales {
     description: "Cumulative total sales from items sold (also known as a running total)"
     type: running_total
-    sql: ${l_quantity} * ${l_totalprice} ;;
+    sql: ${l_totalprice} ;;
     value_format_name: usd
   }
 }
