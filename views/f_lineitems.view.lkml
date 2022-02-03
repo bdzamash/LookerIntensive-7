@@ -157,7 +157,7 @@ view: f_lineitems {
     description: "Total sales by customers from Russia"
     type: sum
     sql: ${l_totalprice} ;;
-    filters: [d_customer.c_nation : "Russia"]
+    filters: [d_customer.c_nation : "RUSSIA"]
     value_format_name: usd
   }
 }
