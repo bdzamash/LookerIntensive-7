@@ -153,11 +153,87 @@ view: f_lineitems {
     value_format_name: usd
   }
 
+  dimension: Is_Russia {
+    type: yesno
+    sql: d_customer.c_nation : "RUSSIA";;
+  }
+
   measure: Total_Russia_Sales {
     description: "Total sales by customers from Russia"
     type: sum
     sql: ${l_totalprice} ;;
-    filters: [d_customer.c_nation : "RUSSIA"]
+    filters: [Is_Russia: "yes"]
     value_format_name: usd
+  }
+
+  dimension: Is_Completed {
+    type: yesno
+    sql: ${l_orderstatus} : 'F' ;;
+  }
+
+  measure: Total_Gross_Revenue {
+    description: "Total price of completed sales"
+    type: sum
+    sql: ${l_totalprice} ;;
+    filters: [Is_Completed: "yes"]
+    value_format_name: usd
+  }
+
+  measure: Total_Cost {
+    description: "Total cost of items sold from inventory"
+    type: sum
+    sql: ${l_supplycost} ;;
+    value_format_name: usd
+  }
+
+  measure: Total_Gross_Margin_Amount {
+    description: "Total Gross Revenue – Total Cost"
+    type: number
+    sql: ${Total_Gross_Revenue} - ${Total_Cost} ;;
+    value_format_name: usd
+  }
+
+  measure: Goss_Margin_Percentage {
+    description: "Total Gross Margin Amount / Total Gross Revenue"
+    type: number
+    sql: ${Total_Gross_Margin_Amount} / ${Total_Gross_Revenue} ;;
+    value_format: "0.00\%"
+  }
+
+  dimension: Is_Returned {
+    type: yesno
+    sql: ${l_returnflag} : 'R' ;;
+  }
+
+  measure: Number_of_Items_Returned {
+    description: "Number of items that were returned by dissatisfied customers"
+    type: sum
+    sql: ${l_quantity} ;;
+    filters: [Is_Returned: "yes"]
+  }
+
+  measure: Total_Number_of_Items_Sold {
+    type: sum
+    sql: ${l_quantity} ;;
+  }
+
+  measure: Item_Return_Rate {
+    description: "Number Of Items Returned / Total Number Of Items Sold"
+    type: number
+    sql: ${Number_of_Items_Returned} / ${Total_Number_of_Items_Sold} ;;
+    value_format: "0.00\%"
+  }
+
+  measure: Total_Number_of_Customers {
+    description: "Total number of customers"
+    type: count_distinct
+    sql:  ${l_custkey};;
+  }
+
+  measure: Average_Spend_Per_Customer {
+    description: "Total Sale Price / Total Number of Customers"
+    type: number
+    sql: ${Total_Sale_Price} / ${Total_Number_of_Customers} ;;
+    value_format: "$0.00"
   }
 }
