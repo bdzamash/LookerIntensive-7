@@ -48,7 +48,7 @@ view: d_supplier {
       • 7000 <
       "
     type: tier
-    tiers: [1, 3001, 5001, 7001]
+    tiers: [1, 3000, 5000, 7000]
     style: integer
     sql: ${s_acctbal} ;;
   }
