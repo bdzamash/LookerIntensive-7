@@ -39,7 +39,7 @@ view: d_supplier {
     sql: ${TABLE}."S_SUPPKEY" ;;
   }
 
-  dimension: Cohort_of_suppliers_according_to_Account_Balance {
+  dimension: Suppliers_Account_Balance_Cohort {
     description: "Cohort of suppliers according to Account Balance:
       • <= 0
       • 1—300
