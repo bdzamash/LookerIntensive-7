@@ -3,11 +3,13 @@ view: f_lineitems {
     ;;
 
   dimension: l_availqty {
+    label: "available quantity"
     type: number
     sql: ${TABLE}."L_AVAILQTY" ;;
   }
 
   dimension: l_clerk {
+    label: "clerk"
     type: string
     sql: ${TABLE}."L_CLERK" ;;
   }
@@ -25,16 +27,19 @@ view: f_lineitems {
   }
 
   dimension: l_discount {
+    label: "discount"
     type: number
     sql: ${TABLE}."L_DISCOUNT" ;;
   }
 
   dimension: l_extendedprice {
+    label: "extended price"
     type: number
     sql: ${TABLE}."L_EXTENDEDPRICE" ;;
   }
 
   dimension: l_linenumber {
+    label: "line number"
     type: number
     sql: ${TABLE}."L_LINENUMBER" ;;
   }
@@ -53,11 +58,13 @@ view: f_lineitems {
   }
 
   dimension: l_orderpriority {
+    label: "priority"
     type: string
     sql: ${TABLE}."L_ORDERPRIORITY" ;;
   }
 
   dimension: l_orderstatus {
+    label: "status"
     type: string
     sql: ${TABLE}."L_ORDERSTATUS" ;;
   }
@@ -69,6 +76,7 @@ view: f_lineitems {
   }
 
   dimension: l_quantity {
+    label: "quantity"
     type: number
     sql: ${TABLE}."L_QUANTITY" ;;
   }
@@ -80,6 +88,7 @@ view: f_lineitems {
   }
 
   dimension: l_returnflag {
+    label: "return flag"
     type: string
     sql: ${TABLE}."L_RETURNFLAG" ;;
   }
@@ -91,16 +100,19 @@ view: f_lineitems {
   }
 
   dimension: l_shipinstruct {
+    label: "ship instruction"
     type: string
     sql: ${TABLE}."L_SHIPINSTRUCT" ;;
   }
 
   dimension: l_shipmode {
+  label: "ship mode"
     type: string
     sql: ${TABLE}."L_SHIPMODE" ;;
   }
 
   dimension: l_shippriority {
+    label: "ship priority"
     type: number
     sql: ${TABLE}."L_SHIPPRIORITY" ;;
   }
@@ -112,16 +124,19 @@ view: f_lineitems {
   }
 
   dimension: l_supplycost {
+    label: "supply cost"
     type: number
     sql: ${TABLE}."L_SUPPLYCOST" ;;
   }
 
   dimension: l_tax {
+    label: "tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
   }
 
   dimension: l_totalprice {
+    label: "total price"
     hidden: yes
     type: number
     sql: ${TABLE}."L_TOTALPRICE" ;;
@@ -130,16 +145,19 @@ view: f_lineitems {
   dimension: Is_Russia {
     type: yesno
     sql: d_customer.c_nation : "RUSSIA";;
+    group_label: "Dimension filters"
   }
 
   dimension: Is_Returned {
     type: yesno
     sql: ${l_returnflag} : 'R' ;;
+    group_label: "Dimension filters"
   }
 
   dimension: Is_Completed {
     type: yesno
     sql: ${l_orderstatus} : 'F' ;;
+    group_label: "Dimension filters"
   }
 
   measure: count {
