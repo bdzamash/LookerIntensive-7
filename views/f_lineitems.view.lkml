@@ -127,6 +127,21 @@ view: f_lineitems {
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
+  dimension: Is_Russia {
+    type: yesno
+    sql: d_customer.c_nation : "RUSSIA";;
+  }
+
+  dimension: Is_Returned {
+    type: yesno
+    sql: ${l_returnflag} : 'R' ;;
+  }
+
+  dimension: Is_Completed {
+    type: yesno
+    sql: ${l_orderstatus} : 'F' ;;
+  }
+
   measure: count {
     type: count
     drill_fields: []
@@ -153,22 +168,12 @@ view: f_lineitems {
     value_format_name: usd
   }
 
-  dimension: Is_Russia {
-    type: yesno
-    sql: d_customer.c_nation : "RUSSIA";;
-  }
-
   measure: Total_Russia_Sales {
     description: "Total sales by customers from Russia"
     type: sum
     sql: ${l_totalprice} ;;
     filters: [Is_Russia: "yes"]
     value_format_name: usd
-  }
-
-  dimension: Is_Completed {
-    type: yesno
-    sql: ${l_orderstatus} : 'F' ;;
   }
 
   measure: Total_Gross_Revenue {
@@ -196,13 +201,8 @@ view: f_lineitems {
   measure: Goss_Margin_Percentage {
     description: "Total Gross Margin Amount / Total Gross Revenue"
     type: number
-    sql: ${Total_Gross_Margin_Amount} / ${Total_Gross_Revenue} ;;
+    sql: ${Total_Gross_Margin_Amount} / NULLIF(${Total_Gross_Revenue},0) ;;
     value_format: "0.00\%"
-  }
-
-  dimension: Is_Returned {
-    type: yesno
-    sql: ${l_returnflag} : 'R' ;;
   }
 
   measure: Number_of_Items_Returned {
@@ -220,20 +220,21 @@ view: f_lineitems {
   measure: Item_Return_Rate {
     description: "Number Of Items Returned / Total Number Of Items Sold"
     type: number
-    sql: ${Number_of_Items_Returned} / ${Total_Number_of_Items_Sold} ;;
+    sql: ${Number_of_Items_Returned} / NULLIF(${Total_Number_of_Items_Sold},0) ;;
     value_format: "0.00\%"
   }
 
-  measure: Total_Number_of_Customers {
-    description: "Total number of customers"
-    type: count_distinct
-    sql:  ${l_custkey};;
-  }
+  # measure: Total_Number_of_Customers {
+  #   description: "Total number of customers"
+  #   type: count_distinct
+  #   sql:  ${l_custkey};;
+  # }
 
   measure: Average_Spend_Per_Customer {
     description: "Total Sale Price / Total Number of Customers"
-    type: number
-    sql: ${Total_Sale_Price} / ${Total_Number_of_Customers} ;;
+    type: average_distinct
+    sql_distinct_key: ${l_custkey}
+    sql: ${l_totalprice};;
     value_format: "$0.00"
   }
 }
