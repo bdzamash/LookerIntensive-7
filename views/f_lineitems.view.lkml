@@ -242,17 +242,16 @@ view: f_lineitems {
     value_format: "0.00\%"
   }
 
-  # measure: Total_Number_of_Customers {
-  #   description: "Total number of customers"
-  #   type: count_distinct
-  #   sql:  ${l_custkey};;
-  # }
+  measure: Total_Number_of_Customers {
+    description: "Total number of customers"
+    type: count_distinct
+    sql:  ${l_custkey};;
+  }
 
   measure: Average_Spend_Per_Customer {
     description: "Total Sale Price / Total Number of Customers"
-    type: average_distinct
-    sql_distinct_key: ${l_custkey};;
-    sql: ${l_totalprice};;
+    type: number
+    sql: ${Total_Sale_Price} / NULLIF(${Total_Number_of_Customers},0);;
     value_format: "$0.00"
   }
 }
