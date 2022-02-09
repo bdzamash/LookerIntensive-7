@@ -21,8 +21,8 @@ persist_with: looker7_default_datagroup
 explore: f_lineitems {
   join: d_customer {
     type: left_outer
-    sql_on: ${d_customer.c_custkey} = ${f_lineitems.l_custkey} ;;
     relationship: many_to_one
+    sql_on: ${d_customer.c_custkey} = ${f_lineitems.l_custkey} ;;
   }
 
   join: d_dates {
