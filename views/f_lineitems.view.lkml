@@ -148,14 +148,10 @@ view: f_lineitems {
     group_label: "Dimension filters"
   }
 
-  dimension: country {
-    type: string
-    sql: ${d_customer.c_nation};;
-  }
-
   dimension: Is_Russia {
     type: yesno
-    sql: ${country} = "RUSSIA";;
+    sql: ${d_customer.c_nation} = 'RUSSIA';;
+    group_label: "Dimension filters"
   }
 
   dimension: Is_Completed {
@@ -208,8 +204,8 @@ view: f_lineitems {
   measure: Total_Russia_Sales {
     description: "Total sales by customers from Russia"
     type: sum
-    sql: ${f_lineitems.l_totalprice} ;;
-    filters: [Is_Russia : "yes"]
+    sql: ${l_totalprice} ;;
+    filters: [Is_Russia: "yes"]
     value_format_name: usd
   }
 
