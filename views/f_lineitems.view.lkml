@@ -156,7 +156,6 @@ view: f_lineitems {
   dimension: Is_Russia {
     type: yesno
     sql: ${country} = "RUSSIA";;
-    group_label: "Dimension filters"
   }
 
   dimension: Is_Completed {
