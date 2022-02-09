@@ -219,7 +219,7 @@ view: f_lineitems {
   measure: Goss_Margin_Percentage {
     description: "Total Gross Margin Amount / Total Gross Revenue"
     type: number
-    sql: ${Total_Gross_Margin_Amount} / NULLIF(${Total_Gross_Revenue},0) ;;
+    sql: ${Total_Gross_Margin_Amount} / IFNULL(${Total_Gross_Revenue},0) ;;
     # value_format: "0.00\%"
   }
 
@@ -251,7 +251,7 @@ view: f_lineitems {
   measure: Average_Spend_Per_Customer {
     description: "Total Sale Price / Total Number of Customers"
     type: number
-    sql: ${Total_Sale_Price} / ifnull(${Total_Number_of_Customers},0);;
+    sql: ${Total_Sale_Price} / IFNULL(${Total_Number_of_Customers},0);;
     value_format: "$0.00"
   }
 }
