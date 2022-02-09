@@ -3,31 +3,37 @@ view: d_supplier {
     ;;
 
   dimension: s_acctbal {
+    label: "account balance"
     type: number
     sql: ${TABLE}."S_ACCTBAL" ;;
   }
 
   dimension: s_address {
+    label: "address"
     type: string
     sql: ${TABLE}."S_ADDRESS" ;;
   }
 
   dimension: s_name {
+    label: "name"
     type: string
     sql: ${TABLE}."S_NAME" ;;
   }
 
   dimension: s_nation {
+    label: "nation"
     type: string
     sql: ${TABLE}."S_NATION" ;;
   }
 
   dimension: s_phone {
+    label: "phone"
     type: string
     sql: ${TABLE}."S_PHONE" ;;
   }
 
   dimension: s_region {
+    label: "region"
     type: string
     sql: ${TABLE}."S_REGION" ;;
   }

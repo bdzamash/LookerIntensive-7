@@ -3,6 +3,7 @@ view: d_dates {
     ;;
 
   dimension_group: date_val {
+    label: "Dates"
     type: time
     timeframes: [
       raw,

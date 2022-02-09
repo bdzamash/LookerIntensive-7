@@ -3,6 +3,7 @@ view: d_customer {
     ;;
 
   dimension: c_address {
+    label: "address"
     type: string
     sql: ${TABLE}."C_ADDRESS" ;;
   }
@@ -15,26 +16,31 @@ view: d_customer {
   }
 
   dimension: c_mktsegment {
+    label: "segment"
     type: number
     sql: ${TABLE}."C_MKTSEGMENT" ;;
   }
 
   dimension: c_name {
+    label: "name"
     type: string
     sql: ${TABLE}."C_NAME" ;;
   }
 
   dimension: c_nation {
+    label: "nation"
     type: string
     sql: ${TABLE}."C_NATION" ;;
   }
 
   dimension: c_phone {
+    label: "phone"
     type: string
     sql: ${TABLE}."C_PHONE" ;;
   }
 
   dimension: c_region {
+    label: "region"
     type: string
     sql: ${TABLE}."C_REGION" ;;
   }
