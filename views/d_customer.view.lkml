@@ -39,22 +39,9 @@ view: d_customer {
     sql: ${TABLE}."C_REGION" ;;
   }
 
-  dimension: Is_Russia {
-    type: yesno
-    sql: ${c_nation} = "RUSSIA";;
-    group_label: "Dimension filters"
-  }
-
   measure: count {
     type: count
     drill_fields: [c_name]
   }
 
-  measure: Total_Russia_Sales {
-    description: "Total sales by customers from Russia"
-    type: sum
-    sql: ${f_lineitems.l_totalprice} ;;
-    filters: [Is_Russia: "yes"]
-    value_format_name: usd
-  }
 }

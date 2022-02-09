@@ -148,6 +148,12 @@ view: f_lineitems {
     group_label: "Dimension filters"
   }
 
+  dimension: Is_Russia {
+    type: yesno
+    sql: ${d_customer.c_nation} = "RUSSIA";;
+    group_label: "Dimension filters"
+  }
+
   dimension: Is_Completed {
     type: yesno
     sql: ${l_orderstatus} = 'F' ;;
@@ -192,6 +198,14 @@ view: f_lineitems {
     description: "Total cost of items sold from inventory"
     type: sum
     sql: ${l_supplycost} ;;
+    value_format_name: usd
+  }
+
+  measure: Total_Russia_Sales {
+    description: "Total sales by customers from Russia"
+    type: sum
+    sql: ${f_lineitems.l_totalprice} ;;
+    filters: [Is_Russia: "yes"]
     value_format_name: usd
   }
 
