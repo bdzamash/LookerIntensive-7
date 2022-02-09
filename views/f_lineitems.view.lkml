@@ -143,18 +143,21 @@ view: f_lineitems {
   }
 
   dimension: Is_Returned {
+    hidden: yes
     type: yesno
     sql: ${l_returnflag} = 'R' ;;
     group_label: "Dimension filters"
   }
 
   dimension: Is_Russia {
+    hidden:  yes
     type: yesno
     sql: ${d_customer.c_nation} = 'RUSSIA';;
     group_label: "Dimension filters"
   }
 
   dimension: Is_Completed {
+    hidden: yes
     type: yesno
     sql: ${l_orderstatus} = 'F' ;;
     group_label: "Dimension filters"
