@@ -206,7 +206,7 @@ view: f_lineitems {
     description: "Total Gross Margin Amount / Total Gross Revenue"
     type: number
     sql: ${Total_Gross_Margin_Amount} / NULLIF(${Total_Gross_Revenue},0) ;;
-    # value_format: "0.00\%"
+    value_format: "0.00\%"
   }
 
   measure: Number_of_Items_Returned {
