@@ -219,7 +219,7 @@ view: f_lineitems {
   measure: Goss_Margin_Percentage {
     description: "Total Gross Margin Amount / Total Gross Revenue"
     type: number
-    sql: ${Total_Gross_Margin_Amount} / ifnull(${Total_Gross_Revenue},0) ;;
+    sql: ${Total_Gross_Margin_Amount} / NULLIF(${Total_Gross_Revenue},0) ;;
     # value_format: "0.00\%"
   }
 
