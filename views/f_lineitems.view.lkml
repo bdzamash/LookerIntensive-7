@@ -251,7 +251,7 @@ view: f_lineitems {
   measure: Average_Spend_Per_Customer {
     description: "Total Sale Price / Total Number of Customers"
     type: average_distinct
-    sql_distinct_key: ${l_custkey}
+    sql_distinct_key: ${l_custkey};;
     sql: ${l_totalprice};;
     value_format: "$0.00"
   }
