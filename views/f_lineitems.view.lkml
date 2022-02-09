@@ -180,14 +180,6 @@ view: f_lineitems {
     value_format_name: usd
   }
 
-  measure: Total_Russia_Sales {
-    description: "Total sales by customers from Russia"
-    type: sum
-    sql: ${l_totalprice} ;;
-    #filters: [Is_Russia: "yes"]
-    value_format_name: usd
-  }
-
   measure: Total_Gross_Revenue {
     description: "Total price of completed sales"
     type: sum

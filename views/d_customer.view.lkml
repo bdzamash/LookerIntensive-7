@@ -49,4 +49,12 @@ view: d_customer {
     type: count
     drill_fields: [c_name]
   }
+
+  measure: Total_Russia_Sales {
+    description: "Total sales by customers from Russia"
+    type: sum
+    sql: ${f_lineitems.l_totalprice} ;;
+    filters: [Is_Russia: "yes"]
+    value_format_name: usd
+  }
 }
