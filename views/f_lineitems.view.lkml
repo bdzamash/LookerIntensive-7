@@ -144,13 +144,13 @@ view: f_lineitems {
 
   dimension: Is_Russia {
     type: yesno
-    sql: d_customer.c_nation : "RUSSIA";;
+    sql: d_customer.c_nation = "RUSSIA";;
     group_label: "Dimension filters"
   }
 
   dimension: Is_Returned {
     type: yesno
-    sql: ${l_returnflag} : 'R' ;;
+    sql: ${l_returnflag} = 'R' ;;
     group_label: "Dimension filters"
   }
 
@@ -227,7 +227,7 @@ view: f_lineitems {
     description: "Number of items that were returned by dissatisfied customers"
     type: sum
     sql: ${l_quantity} ;;
-    filters: [Is_Returned: "yes"]
+    filters: [Is_Returned : "yes"]
   }
 
   measure: Total_Number_of_Items_Sold {
@@ -251,7 +251,7 @@ view: f_lineitems {
   measure: Average_Spend_Per_Customer {
     description: "Total Sale Price / Total Number of Customers"
     type: number
-    sql: ${Total_Sale_Price} / IFNULL(${Total_Number_of_Customers},0);;
+    sql: ${Total_Sale_Price} / NULLIF(${Total_Number_of_Customers},0);;
     value_format: "$0.00"
   }
 }
