@@ -39,6 +39,12 @@ view: d_customer {
     sql: ${TABLE}."C_REGION" ;;
   }
 
+  dimension: Is_Russia {
+    type: yesno
+    sql: ${c_nation} = "RUSSIA";;
+    group_label: "Dimension filters"
+  }
+
   measure: count {
     type: count
     drill_fields: [c_name]

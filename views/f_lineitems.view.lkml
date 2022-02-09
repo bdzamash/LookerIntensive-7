@@ -142,12 +142,6 @@ view: f_lineitems {
     sql: ${TABLE}."L_TOTALPRICE" ;;
   }
 
-  dimension: Is_Russia {
-    type: yesno
-    sql: d_customer.c_nation = "RUSSIA";;
-    group_label: "Dimension filters"
-  }
-
   dimension: Is_Returned {
     type: yesno
     sql: ${l_returnflag} = 'R' ;;
@@ -190,7 +184,7 @@ view: f_lineitems {
     description: "Total sales by customers from Russia"
     type: sum
     sql: ${l_totalprice} ;;
-    filters: [Is_Russia: "yes"]
+    #filters: [Is_Russia: "yes"]
     value_format_name: usd
   }
 
