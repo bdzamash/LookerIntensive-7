@@ -317,4 +317,10 @@ view: f_lineitems {
     filters: [d_dates.month_year: "Jan 1995"]
   }
 
+  measure: Total_Number_of_orders {
+    description: "Total Number of orders"
+    type: count_distinct
+    sql: ${l_orderkey};;
+  }
+
 }
