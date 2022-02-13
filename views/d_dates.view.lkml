@@ -55,6 +55,11 @@ view: d_dates {
     sql: ${TABLE}."YEAR" ;;
   }
 
+  dimension: month_year {
+    type: string
+    sql: CONCAT(${month_name}, ' ', ${year}) ;;
+  }
+
   measure: count {
     type: count
     drill_fields: [month_name]

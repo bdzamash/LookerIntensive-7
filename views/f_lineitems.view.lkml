@@ -258,12 +258,62 @@ view: f_lineitems {
     value_format: "$0.00"
   }
 
-  measure: Total_Revenue_for_1_Jan_1995 {
+  measure: Total_Revenue_1_Jan_1995 {
     description: "Total Revenue for 1 January 1995"
     type: sum
     sql: ${l_totalprice};;
     filters: [d_dates.date_val_date : "1995-01-01"]
     value_format_name: usd
+  }
+
+  measure: Total_Number_of_orders_1_Jan_1995 {
+    description: "Total Number of orders for 1 January 1995"
+    type: count_distinct
+    sql: ${l_orderkey};;
+    filters: [d_dates.date_val_date : "1995-01-01"]
+  }
+
+  measure: Total_Gross_Revenue_Jan_1995 {
+    hidden: yes
+    description: "Total price of completed sales for January 1995"
+    type: sum
+    sql: ${l_totalprice} ;;
+    filters: [Is_Completed: "yes"]
+    filters: [d_dates.month_year: "Jan 1995"]
+    value_format_name: usd
+  }
+
+  measure: Total_Cost_Jan_1995 {
+    hidden: yes
+    description: "Total cost of items sold from inventory for January 1995"
+    type: sum
+    sql: ${l_supplycost} ;;
+    filters: [d_dates.month_year: "Jan 1995"]
+    value_format_name: usd
+  }
+
+  measure: Total_Gross_Margin_Amount_Jan_1995 {
+    hidden:  yes
+    description: "Total Gross Revenue Jan 1995 – Total Cost Jan 1995"
+    type: number
+    sql: ${Total_Gross_Revenue_Jan_1995} - ${Total_Cost_Jan_1995} ;;
+    value_format_name: usd
+  }
+
+  measure: Goss_Margin_Percentage_Jan_1995 {
+    label: "Gross Margin % over the Jan 1995"
+    description: "Gross Margin % over the Jan 1995"
+    type: number
+    sql: ${Total_Gross_Margin_Amount_Jan_1995} / NULLIF(${Total_Gross_Revenue_Jan_1995},0) ;;
+    value_format: "0.00\%"
+  }
+
+  measure: Total_Number_of_Returns_Jan_1995 {
+    description: "Total number of returns over the Jan 1995"
+    type: sum
+    sql: ${l_quantity} ;;
+    filters: [Is_Returned : "yes"]
+    filters: [d_dates.month_year: "Jan 1995"]
   }
 
 }
