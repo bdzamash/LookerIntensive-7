@@ -217,6 +217,7 @@ view: f_lineitems {
     type: number
     sql: ${Total_Gross_Revenue} - ${Total_Cost} ;;
     value_format_name: usd
+    drill_fields: [d_supplier.s_name, d_supplier.region, d_supplier.s_acctbal, d_supplier.Suppliers_Account_Balance_Cohort]
   }
 
   measure: Goss_Margin_Percentage {
