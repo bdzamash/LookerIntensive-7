@@ -293,7 +293,7 @@ view: f_lineitems {
   }
 
   measure: Total_Gross_Margin_Amount_Jan_1995 {
-    hidden:  yes
+    #hidden:  yes
     description: "Total Gross Revenue Jan 1995 – Total Cost Jan 1995"
     type: number
     sql: ${Total_Gross_Revenue_Jan_1995} - ${Total_Cost_Jan_1995} ;;
