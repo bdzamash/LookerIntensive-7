@@ -280,7 +280,7 @@ view: f_lineitems {
     sql: ${l_totalprice} ;;
     filters: [Is_Completed: "yes"]
     filters: [d_dates.month_year: "Jan 1995"]
-    value_format_name: usd
+    value_format: "$#,##0"
   }
 
   measure: Total_Cost_Jan_1995 {
@@ -289,7 +289,7 @@ view: f_lineitems {
     type: sum
     sql: ${l_supplycost} ;;
     filters: [d_dates.month_year: "Jan 1995"]
-    value_format_name: usd
+    value_format: "$#,##0"
   }
 
   measure: Total_Gross_Margin_Amount_Jan_1995 {
@@ -297,7 +297,7 @@ view: f_lineitems {
     description: "Total Gross Revenue Jan 1995 – Total Cost Jan 1995"
     type: number
     sql: ${Total_Gross_Revenue_Jan_1995} - ${Total_Cost_Jan_1995} ;;
-    value_format_name: usd
+    value_format: "$#,##0"
   }
 
   measure: Goss_Margin_Percentage_Jan_1995 {
