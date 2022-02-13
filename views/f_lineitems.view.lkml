@@ -263,7 +263,7 @@ view: f_lineitems {
     type: sum
     sql: ${l_totalprice};;
     filters: [d_dates.date_val_date : "1995-01-01"]
-    value_format_name: usd
+    value_format: "$0"
   }
 
   measure: Total_Number_of_orders_1_Jan_1995 {
