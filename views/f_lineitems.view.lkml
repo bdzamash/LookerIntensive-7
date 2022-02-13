@@ -257,4 +257,13 @@ view: f_lineitems {
     sql: ${Total_Sale_Price} / NULLIF(${Total_Number_of_Customers},0);;
     value_format: "$0.00"
   }
+
+  measure: Total_Revenue_for_1_Jan_1995 {
+    description: "Total Revenue for 1 January 1995"
+    type: sum
+    sql: ${l_totalprice};;
+    filters: [d_dates.date_val_date : "1995-01-01"]
+    value_format_name: usd
+  }
+
 }
