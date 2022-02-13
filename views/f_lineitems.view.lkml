@@ -157,7 +157,7 @@ view: f_lineitems {
   }
 
   dimension: Is_Completed {
-    hidden: yes
+    #hidden: yes
     type: yesno
     sql: ${l_orderstatus} = 'F' ;;
     group_label: "Dimension filters"
