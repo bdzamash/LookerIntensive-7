@@ -216,7 +216,7 @@ view: f_lineitems {
     description: "Total Gross Revenue – Total Cost"
     type: number
     sql: ${Total_Gross_Revenue} - ${Total_Cost} ;;
-    value_format_name: usd
+    value_format: "$0.00"
     drill_fields: [d_supplier.s_name, d_supplier.region, d_supplier.s_acctbal, d_supplier.Suppliers_Account_Balance_Cohort]
   }
 
