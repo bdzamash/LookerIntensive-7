@@ -60,6 +60,19 @@ view: d_dates {
     sql: CONCAT(${month_name}, ' ', ${year}) ;;
   }
 
+  dimension: is_before_mtd {
+    type: yesno
+    sql:
+    DAY(${date_val_raw}) < DAY(CURRENT_TIMESTAMP())
+      OR
+      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) AND
+      HOUR(${date_val_raw}) < HOUR(CURRENT_TIMESTAMP())
+      OR
+      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) AND
+      HOUR(${date_val_raw}) <= HOUR(CURRENT_TIMESTAMP()) AND
+      MINUTE(${date_val_raw}) < MINUTE(CURRENT_TIMESTAMP())  ;;
+    }
+
   measure: count {
     type: count
     drill_fields: [month_name]
