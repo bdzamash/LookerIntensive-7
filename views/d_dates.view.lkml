@@ -65,12 +65,7 @@ view: d_dates {
     sql:
     DAY(${date_val_raw}) < DAY(CURRENT_TIMESTAMP())
       OR
-      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) AND
-      HOUR(${date_val_raw}) < HOUR(CURRENT_TIMESTAMP())
-      OR
-      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) AND
-      HOUR(${date_val_raw}) <= HOUR(CURRENT_TIMESTAMP()) AND
-      MINUTE(${date_val_raw}) < MINUTE(CURRENT_TIMESTAMP())  ;;
+      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) ;;
     }
 
   measure: count {
