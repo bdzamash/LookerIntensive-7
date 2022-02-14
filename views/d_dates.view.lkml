@@ -63,9 +63,9 @@ view: d_dates {
   dimension: is_before_mtd {
     type: yesno
     sql:
-    DAY(${date_val_raw}) < DAY(CURRENT_TIMESTAMP())
-      OR
-      DAY(${date_val_raw}) = DAY(CURRENT_TIMESTAMP()) ;;
+    DAY(${date_val_raw}) <= DAY(${date_val_raw})
+      AND
+    MONTH(${date_val_raw}) = MONTH(${date_val_raw}) ;;
     }
 
   measure: count {
