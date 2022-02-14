@@ -130,6 +130,7 @@ view: f_lineitems {
   }
 
   dimension: l_tax {
+    hidden: yes
     label: "tax"
     type: number
     sql: ${TABLE}."L_TAX" ;;
@@ -325,4 +326,10 @@ view: f_lineitems {
     sql: ${l_orderkey};;
   }
 
+  measure: Total_Tax {
+    description: "Total TAX"
+    type: sum
+    sql: ${l_tax} ;;
+    value_format_name: usd
+  }
 }
