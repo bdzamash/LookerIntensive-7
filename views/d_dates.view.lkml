@@ -60,14 +60,6 @@ view: d_dates {
     sql: CONCAT(${month_name}, ' ', ${year}) ;;
   }
 
-  dimension: is_before_mtd {
-    type: yesno
-    sql:
-    DAY(${date_val_raw}) <= DAY(${date_val_raw})
-      AND
-    MONTH(${date_val_raw}) = MONTH(${date_val_raw}) ;;
-    }
-
   measure: count {
     type: count
     drill_fields: [month_name]
