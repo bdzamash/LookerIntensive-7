@@ -64,7 +64,7 @@ explore: f_lineitems {
   join: der_supplier {
     view_label: "Derived Suppliers"
     type: left_outer
-    sql_on: ${d_supplier.s_suppkey} = ${der_supplier.s_suppkey} ;;
+    sql_on: ${f_lineitems.l_suppkey} = ${der_supplier.s_suppkey} ;;
     relationship: many_to_one
   }
 }
