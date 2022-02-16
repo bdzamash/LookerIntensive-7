@@ -1,8 +1,8 @@
 view: der_supplier {
    derived_table: {
     sql: SELECT
-        s_suppkey as supplier_id
-        ,s_name as supplier_name
+        s_suppkey
+        ,s_name
         ,sum(l_totalprice)/ (select sum(l_totalprice) from f_lineitems where l_orderstatus = 'F') * 100 revenue_percentage
       FROM f_lineitems
       JOIN d_supplier on s_suppkey = l_suppkey
