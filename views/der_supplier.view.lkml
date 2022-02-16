@@ -30,7 +30,7 @@ view: der_supplier {
     label: "Revenue percent"
     type: number
     sql: ${TABLE}.revenue_percentage ;;
-    value_format: "percent_2"
+    value_format_name: "percent_2"
   }
 
 }
