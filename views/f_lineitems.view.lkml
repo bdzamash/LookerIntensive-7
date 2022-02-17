@@ -196,7 +196,7 @@ view: f_lineitems {
     sql: ${l_totalprice} ;;
     filters: [Is_Completed: "yes"]
     value_format_name: usd
-    drill_fields: [d_supplier.s_name, l_orderkey, l_orderstatus, Total_Sale_Price, Total_Number_of_Items_Sold, Total_Number_of_Customers]
+    drill_fields: [d_supplier.s_name, l_orderkey, Total_Sale_Price, Total_Number_of_Items_Sold, Total_Number_of_Customers]
   }
 
   measure: Total_Cost {

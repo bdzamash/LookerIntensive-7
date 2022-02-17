@@ -25,6 +25,11 @@ view: d_dates {
     sql: ${TABLE}."DATEKEY" ;;
   }
 
+  dimension: day {
+    type: number
+    sql: DAY(${date_val_raw}) ;;
+  }
+
   dimension: day_of_week {
     type: number
     sql: ${TABLE}."DAY_OF_WEEK" ;;
